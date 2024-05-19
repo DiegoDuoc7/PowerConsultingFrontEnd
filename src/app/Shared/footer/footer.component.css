@@ -1,0 +1,19 @@
+html, body {
+  height: 100%; /* Asegura que el html y el body ocupen toda la altura */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en columna */
+}
+
+.content {
+  flex: 1; /* Esto empuja el footer hacia abajo si el contenido no es suficiente */
+}
+
+footer {
+  flex-shrink: 0; /* Esto evita que el footer se encoja */
+}
+
