@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Lista de Empleados</h2>
+  <div class="text-right mb-3">
+    <a routerLink="/create" class="btn btn-primary">Crear Nuevo Empleado</a>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let employee of employees" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>
+        <strong>{{ employee.nombre }} {{ employee.apellido }}</strong> - {{ employee.puesto }}
+      </span>
+      <div>
+        <button (click)="deleteEmployee(employee._id)" class="btn btn-danger btn-sm mr-2">Eliminar</button>
+        <a [routerLink]="['/edit', employee._id]" class="btn btn-warning btn-sm">Editar</a>
+      </div>
+    </li>
+  </ul>
+</div>
