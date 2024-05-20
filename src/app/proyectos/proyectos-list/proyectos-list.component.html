@@ -1,0 +1,51 @@
+<div style="text-align: center; margin-top: 20px;">
+  <h2>Subir Proyecto</h2>
+  <input type="file" id="file" >
+  <button >Subir</button>
+</div>
+
+<h2>Proyectos Almacenados</h2>
+<ul>
+  <li *ngFor="let proyecto of proyectos">
+    {{ proyecto.nombre }} - {{ proyecto.nombreEmpleado || 'Sin asignar' }}
+  </li>
+</ul>
+
+<ng-template #noProyectos>
+  <div style="margin-top: 20px;">
+    <p>No hay proyectos almacenados.</p>
+  </div>
+</ng-template>
+<table style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="padding: 8px; border: 1px solid #ddd;">Nombre del Proyecto</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Descripción</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Porcentaje de Avance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proyecto of proyectos" style="border: 1px solid #ddd; text-align: left;">
+      <td style="padding: 8px;">{{ proyecto.nombre }}</td>
+      <td style="padding: 8px;">{{ proyecto.descripcion }}</td>
+      <td style="padding: 8px;">{{ proyecto.porcentajeAvance }}%</td>
+      <td style="padding: 8px;">{{ proyecto.nombreEmpleado }}</td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 20px;">
+  <h2>Visualización de Proyectos Subidos</h2>
+  <hr>
+  <div *ngIf="proyectos.length > 0; else noProyectos">
+    <ul>
+      <li *ngFor="let proyecto of proyectos">
+        <strong>Nombre:</strong> {{ proyecto.nombre }}<br>
+        <strong>Descripción:</strong> {{ proyecto.descripcion }}<br>
+        <strong>Porcentaje de Avance:</strong> {{ proyecto.porcentajeAvance }}
+        <strong>Nombre del Empleado:</strong> {{ proyecto.nombreEmpleado }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<a routerLink="/proyectos/crear-proyecto" class="btn btn-primary">Crear Proyecto</a>
